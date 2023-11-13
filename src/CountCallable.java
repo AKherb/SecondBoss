@@ -7,7 +7,7 @@ public class CountCallable implements Callable<Integer>
 
         int count = 0;
 
-        for(int i = 0; i < 100000000; i++)
+        for(int i = 0; i < 1000000; i++)
         {
             count++;
         }
