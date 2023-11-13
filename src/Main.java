@@ -1,7 +1,10 @@
 import java.util.concurrent.*;
+import java.time.Instant;
 import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
+
+        long before = System.currentTimeMillis();
 
         Callable<Integer> task = new CountCallable();
         ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -15,7 +18,12 @@ public class Main {
         {
             result += (Integer)(futures.get(i).get());
         }
+
+        long after = System.currentTimeMillis();
+
         System.out.println(result);
+        System.out.println("Counting finished in " + (after - before) / 1000.0 + " seconds.");
+
         executorService.shutdown();
 
     }
